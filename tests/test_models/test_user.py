@@ -32,26 +32,26 @@ class TestUser(TestCase):
     def test_user_set_first_name(self):
         """test user set first name"""
         user = User()
-        user.first_name = "Yassine"
-        self.assertEqual(user.first_name, "Yassine")
+        user.first_name = « mohamed »
+        self.assertEqual(user.first_name, "mohamed")
 
     def test_user_set_last_name(self):
         """test user set last name"""
         user = User()
-        user.last_name = "Ait Mensour"
-        self.assertEqual(user.last_name, "Ait Mensour")
+        user.last_name = "mamouni"
+        self.assertEqual(user.last_name, "mamouni")
 
     def test_user_set_email(self):
         """test user set email"""
         user = User()
-        user.email = "Yassine@alx.com"
-        self.assertEqual(user.email, "Yassine@alx.com")
+        user.email = "omismamouni@gmail.com"
+        self.assertEqual(user.email, "omismamouni@gmail.com")
 
     def test_user_set_password(self):
         """test user set password"""
         user = User()
-        user.password = "Yassine@1990*$"
-        self.assertEqual(user.password, "Yassine@1990*$")
+        user.password = "omis@1000»
+        self.assertEqual(user.password, "omis@1000")
 
     def test_user_to_dict(self):
         """test user to dict"""
@@ -63,24 +63,24 @@ class TestUser(TestCase):
                 "updated_at": user.updated_at.isoformat()
                 }
         self.assertDictEqual(user_dict, user.to_dict())
-        user_dict["first_name"] = "Yassine"
-        user.first_name = "Yassine"
+        user_dict["first_name"] = "mohamed"
+        user.first_name = "mohamed"
         self.assertDictEqual(user_dict, user.to_dict())
-        user_dict["last_name"] = "Ait Mensour"
-        user.last_name = "Ait Mensour"
+        user_dict["last_name"] = "mamouni"
+        user.last_name = "mamouni"
         self.assertDictEqual(user_dict, user.to_dict())
 
     def test_user_initialise_with_kwargs(self):
         """test initialise user with kwargs"""
         u_dict = {
                 "id": str(uuid.uuid4()),
-                "first_name": "Hajar",
-                "last_name": "ALX"
+                "first_name": "Nassima",
+                "last_name": "lakhal"
                 }
         user = User(**u_dict)
         self.assertEqual(u_dict["id"], user.id)
-        self.assertEqual(user.first_name, "Hajar")
-        self.assertEqual(user.last_name, "ALX")
+        self.assertEqual(user.first_name, "Nassima")
+        self.assertEqual(user.last_name, "lakhal")
         self.assertEqual(user.email, "")
         self.assertEqual(user.password, "")
 

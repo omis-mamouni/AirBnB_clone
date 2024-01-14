@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+<div><br class="Apple-interchange-newline">#!/usr/bin/python3
 """This module contains Test Cases of Console Module"""
 from unittest import TestCase, mock, main
 from console import HBNBCommand
@@ -447,11 +447,11 @@ class TestConsole_update(TestCase):
     def test_update_user_first_name_attr(self):
         """test update user first name attr"""
         user = User()
-        line = "update User {} first_name Hajar".format(user.id)
+        line = "update User {} first_name Nassima ».format(user.id)
 
         HBNBCommand().onecmd(line)
         updated_user = models.storage.all()["User.{}".format(user.id)]
-        self.assertEqual(updated_user.first_name, "Hajar")
+        self.assertEqual(updated_user.first_name, "Nassima")
 
     def test_update_place_check_float_type_attr(self):
         """test update place check float type attr"""
@@ -486,10 +486,10 @@ class TestConsole_update(TestCase):
     def test_update_2_attrs(self):
         """test update 2 attrs"""
         user = User()
-        line = "update User {} first_name Hajar last_name ALX"
+        line = "update User {} first_name Nassima last_name lakhal »
 
         HBNBCommand().onecmd(line.format(user.id))
-        self.assertEqual(user.first_name, "Hajar")
+        self.assertEqual(user.first_name, "Nassima")
         self.assertEqual(user.last_name, "")
 
 
@@ -507,10 +507,10 @@ class TestConsole_default(TestCase):
         base1 = BaseModel()
         base2 = BaseModel()
         user1 = User()
-        user1.first_name = "Yassine"
-        user1.last_name = "Amzmiz"
+        user1.first_name = "mohamed"
+        user1.last_name = "mamouni"
         user2 = User()
-        user2.first_name = "Hajar"
+        user2.first_name = "Nassima"
         user2.last_name = "Test"
         place1 = Place()
         place1.name = "Marrakech"
@@ -651,8 +651,8 @@ class TestConsole_default(TestCase):
     def test_console_default_show_user(self):
         """test console default show user"""
         user = User()
-        user.email = "yassine1990@alx.com"
-        user.password = "yassine@1991*$"
+        user.email = "omismamouni@gmail.com"
+        user.password = "omis@1000"
         usr_str = user.__str__()
         with mock.patch('sys.stdout', new=StringIO()) as output:
             HBNBCommand().onecmd('User.show("{}")'.format(user.id))
@@ -737,8 +737,8 @@ class TestConsole_default(TestCase):
     def test_console_default_destroy_instance(self):
         """test console default destroy instance"""
         user = User()
-        user.email = "yassine1990@alx.com"
-        user.password = "yassine@1991*$"
+        user.email = "omismamouni@gmail.com"
+        user.password = "omis@1000"
         HBNBCommand().onecmd('User.destroy("{}")'.format(user.id))
         objs = models.storage.all()
         self.assertNotIn("User.{}".format(user.id), objs.keys())
@@ -810,7 +810,7 @@ class TestConsole_default(TestCase):
         """test console default update user email"""
         user = User()
         self.assertEqual(user.email, "")
-        user_mail = "Yassine_kech@alx.com"
+        user_mail = "mohamedch@alx.com"
         cmd = 'User.update("{}", "email", {})'.format(user.id, user_mail)
         HBNBCommand().onecmd(cmd)
         self.assertEqual(user.email, user_mail)
@@ -818,20 +818,20 @@ class TestConsole_default(TestCase):
     def test_console_default_update_multiple_attrs(self):
         """test console default update multiple attrs"""
         user = User()
-        user_mail = "Yassine_kech@alx.com"
-        user_pwd = "Y1990*$ssine"
+        user_mail = "mohamedch@alx.com"
+        user_pwd = "Y19mohammed »
         cmd = 'User.update("{}", "email", {}, "password", {})'
         HBNBCommand().onecmd(cmd.format(user.id, user_mail, user_pwd))
-        self.assertEqual(user.email, "Yassine_kech@alx.com")
+        self.assertEqual(user.email, "mohamedch@alx.com")
         self.assertEqual(user.password, "")
 
     def test_console_default_update_by_using_dict(self):
         """test console default update by using dict"""
         place = Place()
         amenity_list = [Amenity().id for i in range(4)]
-        desc = "Hotel Hajar: Best place in the world"
+        desc = "Hotel Nassima: Best place in the world"
         p_dict = {
-                "name": "Hotel Hajar",
+                "name": "Hotel Nassima",
                 "description": desc,
                 "number_rooms": "1",
                 "max_guest": 1,
@@ -840,7 +840,7 @@ class TestConsole_default(TestCase):
                 }
         cmd = 'Place.update("{}", {})'.format(place.id, p_dict)
         HBNBCommand().onecmd(cmd)
-        self.assertEqual(place.name, "Hotel Hajar")
+        self.assertEqual(place.name, "Hotel Nassima")
         self.assertEqual(place.description, desc)
         self.assertEqual(place.number_rooms, 1)
         self.assertEqual(place.max_guest, 1)
@@ -851,9 +851,9 @@ class TestConsole_default(TestCase):
         """test console default update by dict check types"""
         place = Place()
         amenity_list = [Amenity().id for i in range(4)]
-        desc = "Hotel Hajar: Best place in the world"
+        desc = "Hotel Nassima: Best place in the world"
         p_dict = {
-                "name": "Hotel Hajar",
+                "name": "Hotel Nassima",
                 "description": desc,
                 "max_guest": 1,
                 "latitude": "7589.201",
@@ -873,12 +873,12 @@ class TestConsole_default(TestCase):
         review = Review()
         review.place_id = "xxxx-xxxx-xxxx-xxxx"
         review.user_id = "yyyy-yyyy-yyyy-yyyy"
-        review.text = "Thank you Hajar <3"
+        review.text = "Thank you Nassima <3"
         cmd = 'Review.update("{}", {})'.format(review.id, {})
         HBNBCommand().onecmd(cmd)
         self.assertEqual(review.place_id, "xxxx-xxxx-xxxx-xxxx")
         self.assertEqual(review.user_id, "yyyy-yyyy-yyyy-yyyy")
-        self.assertEqual(review.text, "Thank you Hajar <3")
+        self.assertEqual(review.text, "Thank you Nassima <3")
 
     def test_console_default_update_by_using_dict_special_characters(self):
         """test console default update by using dict special characters"""
@@ -886,11 +886,11 @@ class TestConsole_default(TestCase):
         review.place_id = "xxxx-xxxx-xxxx-xxxx"
         review.user_id = "yyyy-yyyy-yyyy-yyyy"
         r_dict = {
-                "text": "Thank you Hajar <3 :)"
+                "text": "Thank you Nassima <3 :)"
                 }
         cmd = 'Review.update("{}", {})'.format(review.id, r_dict)
         HBNBCommand().onecmd(cmd)
-        self.assertEqual(review.text, "Thank you Hajar <3 :)")
+        self.assertEqual(review.text, "Thank you Nassima <3 :)")
 
 
 class TestConsole_show_user(TestCase):
@@ -971,4 +971,4 @@ class TestHBNBCommand_count(TestCase):
 
 
 if __name__ == "__main__":
-    main()
+    main()</div>
